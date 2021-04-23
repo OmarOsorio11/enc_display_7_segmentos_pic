@@ -1,0 +1,25 @@
+#include <16F1827.h>
+#device ADC=16
+#FUSES NOWDT                    //No Watch Dog Timer
+#FUSES NOBROWNOUT               //No brownout reset
+#use delay(crystal=4MHz)
+#use standard_io(b) 
+void main()
+{
+   set_tris_b(0b00000000);
+   int numeros[10]={0x40,0x79,0x24,0x30,0x19,0x12,0x02,0x78,0x0,0x10};
+   int contar = 0;
+   output_b(0x40);
+   while(TRUE)
+   {
+      if (contar<10){
+         output_b(numeros[contar]);
+         contar++;
+         delay_ms(300);
+      }
+      else{
+         contar=0;
+      }
+   }
+}
+

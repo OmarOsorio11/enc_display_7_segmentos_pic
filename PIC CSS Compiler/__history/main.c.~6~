@@ -1,0 +1,24 @@
+#include <main.h>
+#use standard_io(a) 
+#use standard_io(b) 
+void main()
+{
+   set_tris_a(0b11111);
+   set_tris_b(0b00000000);
+   int numeros[7]={0b1111001,0x24,0x30,0x19,0x12,0x02};
+   int contar = 0;
+   output_b(0x40);
+   
+   while(TRUE)
+   {
+      if (contar<7){
+         output_b(numeros[contar]);
+         contar++;
+         delay_ms(500);
+      }
+      else{
+         contar=0;
+      }
+   }
+}
+

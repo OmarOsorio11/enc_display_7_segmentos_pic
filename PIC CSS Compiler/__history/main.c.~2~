@@ -1,0 +1,24 @@
+#include <main.h>
+#use standard_io(a) 
+#use standard_io(b) 
+#define RAND_MAX 6 
+#include <stdlib.h> // DEBE IR DESPUES DESPUES DE RAND_MAX 
+void main()
+{
+   set_tris_a(0b11111);
+   set_tris_b(0b00000000);
+   int numeros[6]={0x79,0x24,0x30,0x19,0x12,0x02};
+   int contar = 0;
+   output_b(0x40);
+   srand(1);
+   while(TRUE)
+   {
+      if(input_state(PIN_A0))
+      {
+         while(input(PIN_A0)){}
+         contar = rand();
+         output_b(numeros[contar]);
+      }
+   }
+}
+
